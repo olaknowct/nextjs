@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 function ClientsPage() {
+  // Data from database
   const clients = [
     { id: 'chris', name: 'tuper' },
     { id: 'manu', name: 'ginobli' },
@@ -12,12 +13,7 @@ function ClientsPage() {
       <ul>
         {clients.map((client) => (
           <li key={client.id}>
-            <Link
-              href={{
-                pathname: '/clients/[id]',
-                query: { id: client.id },
-              }}
-            >
+            <Link className='underline' href={`/clients/${client.id}`}>
               {client.name}
             </Link>
           </li>
