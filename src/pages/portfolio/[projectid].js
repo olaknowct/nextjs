@@ -1,11 +1,10 @@
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router'; // nextjs Hooks
 
 function PortfolioProjectPage() {
-  const router = useRouter();
+  const router = useRouter(); // extracting dynamic path
 
-  console.log(router.pathname);
-  console.log(router.query);
-
+  console.log(router.pathname); // pathname url /portfolio/[prjectid]
+  console.log(router.query); // {projectid}
   // send a request to some backend server
   // to fetch the piece of data with an id of router.query.projectid
 
