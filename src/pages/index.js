@@ -1,5 +1,6 @@
 // next js will ignore it during the build since this is part of the getStaticprops
 import fs from 'fs/promises';
+import Link from 'next/link';
 import path from 'path';
 
 export default function Home(props) {
@@ -7,7 +8,9 @@ export default function Home(props) {
   return (
     <ul>
       {products.map((product) => (
-        <li key={product.id}>{product.title}</li>
+        <li key={product.id}>
+          <Link href={`/${product.id}`}>{product.title}</Link>
+        </li>
       ))}
     </ul>
   );
