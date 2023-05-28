@@ -16,10 +16,23 @@ export default function Home(props) {
 // code that will never be visible on the client side
 // nextjs will run this code before running the function component
 // any code inside wil get executed in the serverside
-export async function getStaticProps() {
+export async function getStaticProps(context) {
   const filePath = path.join(process.cwd(), 'data', 'dummy-backend.json');
   const jsonData = await fs.readFile(filePath);
   const data = JSON.parse(jsonData);
+
+  if (!data) {
+    return {
+      redirect: {
+        destination: '/no-data',
+      },
+    };
+  }
+
+  if (data.products.length === 0) {
+    return { notFound: true };
+  }
+
   return {
     props: {
       products: data.products,
