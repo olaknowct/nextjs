@@ -31,3 +31,11 @@ export async function getStaticProps(context) {
     },
   };
 }
+
+// telling nextjs that this page is a dynamic page without this fn it will cause error
+export async function getStaticPaths() {
+  return {
+    paths: [{ params: { pid: 'p1' } }, { params: { pid: 'p2' } }, { params: { pid: 'p3' } }],
+    fallback: false,
+  };
+}
