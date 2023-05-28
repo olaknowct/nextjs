@@ -5,6 +5,11 @@ import Link from 'next/link';
 
 function productDetailPage(props) {
   const { loadedProduct } = props;
+
+  // fall back content, if fall back set to true
+  // if (!loadedProduct) {
+  //   return <p>Loading</p>;
+  // }
   return (
     <>
       <h1>Title</h1>
@@ -35,7 +40,7 @@ export async function getStaticProps(context) {
 // telling nextjs that this page is a dynamic page without this fn it will cause error
 export async function getStaticPaths() {
   return {
-    paths: [{ params: { pid: 'p1' } }, { params: { pid: 'p2' } }, { params: { pid: 'p3' } }],
-    fallback: false,
+    paths: [{ params: { pid: 'p1' } }],
+    fallback: 'blocking', //true, false, block
   };
 }
