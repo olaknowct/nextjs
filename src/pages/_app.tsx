@@ -6,6 +6,8 @@ import Head from 'next/head';
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <Layout>
+      {/* Generic Head that applies to every single page rendered */}
+      {/* Content will be merege if there are multiple Head and resolves conflicts, simply takes the latest elements */}
       <Head>
         <title>Next Events</title>
         <meta name='description' content='NextJS Events' />
